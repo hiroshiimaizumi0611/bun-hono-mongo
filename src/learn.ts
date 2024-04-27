@@ -70,4 +70,17 @@ app.put("/video/:id", async (c) => {
   return c.json(videos[index]);
 });
 
+// delete
+app.delete("/video/:id", (c) => {
+  const { id } = c.req.param();
+  videos = videos.filter((video) => video.id !== id);
+  return c.json({ message: "video deleted" });
+});
+
+// delete all
+app.delete("/videos", (c) => {
+  videos = [];
+  return c.json({ message: "all videos deleted" });
+});
+
 export default app;
